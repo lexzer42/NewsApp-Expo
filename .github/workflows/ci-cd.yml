@@ -58,7 +58,7 @@ jobs:
           git config --global user.email "actions@github.com"
           
           # Obtener último tag
-          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v1.0.0")
           
           # Incrementar versión (patch)
           NEW_VERSION=$(echo $LATEST_TAG | awk -F. '{$NF+=1; OFS="."; print $0}')
