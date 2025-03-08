@@ -26,16 +26,22 @@ jobs:
       
       - name: Run ESLint
         run: pnpm lint
+        env:
+          CI: true  # Modo CI para mejores reportes
       
       - name: Run Prettier check
         run: pnpm format:check
+        env:
+          CI: true  # Añadido también aquí
       
       # Agrega aquí tus pruebas unitarias si las tienes
       # - name: Run tests
       #   run: pnpm test
 
   deploy-prod:
-    if: github.ref == 'refs/heads/main' || github.event_name == 'pull_request'
+    if: |
+      (github.ref == 'refs/heads/main' || github.event_name == 'pull_request') &&
+      github.event_name != 'pull_request_target'  # Previene ejecución en PRs de forks
     needs: lint-and-test
     runs-on: ubuntu-latest
     steps:
