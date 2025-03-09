@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import { ScrollView, StyleSheet, View, Linking } from "react-native";
 import { Card, Title, Paragraph, Button, Divider, Chip, useTheme, IconButton as PaperIconButton } from "react-native-paper";
 import { StackScreenProps } from "@react-navigation/stack";
-import { RootStackParamList } from "../navigation/AppNavigator";
+import { RootStackParamList } from "../interfaces/news";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { saveArticle, unsaveArticle } from "../redux/newsSlice";
 
