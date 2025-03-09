@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { Article, NewsApiError } from "../interfaces/news";
+import { Article } from "../interfaces/news";
 import { fetchTopHeadlines, fetchTopHeadlinesByCategory, fetchTopHeadlinesPaginated, fetchTopHeadlinesPaginatedByCategory } from "../services/newsService";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { logError } from "../utils/logger";
 
 // Define state interface
 interface NewsState {
@@ -34,7 +35,8 @@ export const loadSavedArticles = createAsyncThunk(
       const savedArticlesJson = await AsyncStorage.getItem('savedArticles');
       return savedArticlesJson ? JSON.parse(savedArticlesJson) : [];
     } catch (error) {
-      console.error('Failed to load saved articles', error);
+       
+      logError('Failed to load saved articles', error);
       return [];
     }
   }
