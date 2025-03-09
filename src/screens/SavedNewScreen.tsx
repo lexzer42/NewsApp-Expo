@@ -13,7 +13,7 @@ import { Article } from '../interfaces/news';
 type SavedNewsNavigationProp = StackNavigationProp<RootStackParamList, 'Detail'>;
 
 const SavedNewsScreen = () => {
-  const { savedArticles } = useAppSelector(state => state.news);
+  const { savedArticles } = useAppSelector((state) => state.news);
   const dispatch = useAppDispatch();
   const navigation = useNavigation<SavedNewsNavigationProp>();
 
@@ -24,22 +24,20 @@ const SavedNewsScreen = () => {
 
   // Navigate to article detail
   const goToDetail = (article: Article) => {
-    navigation.navigate("Detail", { article });
+    navigation.navigate('Detail', { article });
   };
 
   // Render saved article item
   const renderItem = ({ item }: { item: Article }) => (
     <Card style={styles.card} mode="elevated" onPress={() => goToDetail(item)}>
-      {item.urlToImage && (
-        <Card.Cover source={{ uri: item.urlToImage }} style={styles.image} />
-      )}
+      {item.urlToImage && <Card.Cover source={{ uri: item.urlToImage }} style={styles.image} />}
       <Card.Content style={styles.content}>
-        <Title numberOfLines={2} style={styles.title}>{item.title}</Title>
+        <Title numberOfLines={2} style={styles.title}>
+          {item.title}
+        </Title>
         <View style={styles.sourceRow}>
           <Text style={styles.source}>{item.source.name}</Text>
-          <Text style={styles.date}>
-            {format(new Date(item.publishedAt), "dd MMM yyyy")}
-          </Text>
+          <Text style={styles.date}>{format(new Date(item.publishedAt), 'dd MMM yyyy')}</Text>
         </View>
         <Paragraph numberOfLines={2} style={styles.description}>
           {item.description}
@@ -96,7 +94,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     overflow: 'hidden',
     elevation: 2,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.2,
     shadowRadius: 2,
