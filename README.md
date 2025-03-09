@@ -92,3 +92,38 @@ pnpm start
 | Build          | `pnpm build`    | Compilar bundle producción |
 
 ---
+
+## 📋 Prueba Técnica - Checklist
+
+Esta aplicación fue desarrollada como parte de una prueba técnica con los siguientes requisitos:
+
+### ✅ Manejo de Estados con Redux
+- ✓ Implementación de Redux para el estado global de la aplicación
+- ✓ Actions y reducers para gestión de noticias desde API
+- ✓ Manejo de estado para artículos guardados
+
+### ✅ Componentización
+- ✓ Componentes reutilizables (NewsList, SkeletonLoading, StatusHandler)
+- ✓ Separación clara de responsabilidades
+- ✓ Props tipados con TypeScript
+
+### ✅ Peticiones HTTP con Axios
+- ✓ Cliente Axios configurado para NewsAPI
+- ✓ Endpoints para listados de noticias
+- ✓ Manejo de paginación y filtrado por categorías
+
+### ✅ Diseño Responsivo
+- ✓ Interfaz adaptable a diferentes tamaños de pantalla
+- ✓ Distribución adecuada de elementos
+- ✓ Soporte para orientación portrait y landscape
+
+### ✅ React Native Paper
+- ✓ UI construida con componentes de Material Design
+- ✓ Cards, Buttons, Chips y otros elementos visuales
+
+### ✅ Funcionalidades
+- ✓ Pantalla de inicio con lista de noticias
+- ✓ Detalle completo de cada noticia
+- ✓ Sistema de guardado de favoritos
+- ✓ Filtrado por categorías
+- ✓ Pull-to-refresh y carga infinita
