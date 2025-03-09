@@ -66,3 +66,44 @@ jobs:
 
       - name: Build web
         run: npx expo export:web
+
+  tag-version:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'  # Solo se ejecuta en push a main
+    
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Necesario para obtener historial de tags
+
+      - name: Get latest tag
+        id: get_tag
+        run: |
+          git fetch --tags
+          latest_tag=$(git describe --tags --abbrev=0 || echo "v0.0.0")
+          echo "latest_tag=$latest_tag" >> $GITHUB_OUTPUT
+
+      - name: Generate new tag
+        id: new_tag
+        run: |
+          latest_tag=${{ steps.get_tag.outputs.latest_tag }}
+          # Extrae números del tag (ej: v1.2.3 → 1 2 3)
+          version=$(echo "$latest_tag" | tr -d 'v' | awk -F. '{ printf "%d %d %d", $1, $2, $3 }')
+          major=$(echo $version | awk '{print $1}')
+          minor=$(echo $version | awk '{print $2}')
+          patch=$(echo $version | awk '{print $3}')
+          
+          # Incrementa versión (cambia lógica si prefieres minor/major)
+          new_patch=$((patch + 1))
+          new_tag="v$major.$minor.$new_patch"
+          echo "new_tag=$new_tag" >> $GITHUB_OUTPUT
+
+      - name: Create and push tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Token automático de GitHub
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git tag ${{ steps.new_tag.outputs.new_tag }}
+          git push origin ${{ steps.new_tag.outputs.new_tag }}
