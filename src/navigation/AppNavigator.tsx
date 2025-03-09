@@ -11,18 +11,8 @@ import SavedNewsScreen from '../screens/SavedNewScreen';
 import CategoriesScreen from '../screens/CategoriesScreen';
 
 // Types
-import { Article } from '../interfaces/news';
+import { RootStackParamList, HomeTabParamList } from '../interfaces/news';
 
-export type RootStackParamList = {
-    HomeTabs: undefined;
-    Detail: { article: Article };
-};
-
-export type HomeTabParamList = {
-    News: undefined;
-    Categories: undefined;
-    Saved: undefined;
-};
 
 const Tab = createBottomTabNavigator<HomeTabParamList>();
 const Stack = createStackNavigator<RootStackParamList>();
@@ -42,7 +32,7 @@ function HomeTabs() {
                     } else if (route.name === 'Saved') {
                         iconName = focused ? 'bookmark' : 'bookmark-outline';
                     }
-                    return <Ionicons name={iconName as any} size={size} color={color} />;
+                    return <Ionicons name={iconName as keyof typeof Ionicons.glyphMap} size={size} color={color} />;
                 },
                 tabBarActiveTintColor: theme.colors.primary,
                 tabBarInactiveTintColor: 'gray',
