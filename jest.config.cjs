@@ -8,4 +8,5 @@ module.exports = {
   moduleNameMapper: {
     '^@env$': '<rootDir>/src/__mocks__/@env/index.cjs',
   },
+  testMatch: ['<rootDir>/src/**/__tests__/**/*.test.ts'],
 };
