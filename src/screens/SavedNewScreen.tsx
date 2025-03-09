@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import { useAppSelector, useAppDispatch } from '../redux/hooks';
 import { loadSavedArticles } from '../redux/newsSlice';
-import { Card, Title, Paragraph, useTheme, IconButton, Text } from 'react-native-paper';
+import { Card, Title, Paragraph, Text } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { format } from 'date-fns';
 import { EmptyState } from '../components/StatusHandler';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../navigation/AppNavigator';
+import { RootStackParamList } from '../interfaces/news';
 import { Article } from '../interfaces/news';
 
 type SavedNewsNavigationProp = StackNavigationProp<RootStackParamList, 'Detail'>;
@@ -16,7 +16,6 @@ const SavedNewsScreen = () => {
   const { savedArticles } = useAppSelector(state => state.news);
   const dispatch = useAppDispatch();
   const navigation = useNavigation<SavedNewsNavigationProp>();
-  const theme = useTheme();
 
   // Load saved articles on component mount
   useEffect(() => {
