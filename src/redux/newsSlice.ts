@@ -1,8 +1,13 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { Article } from "../interfaces/news";
-import { fetchTopHeadlines, fetchTopHeadlinesByCategory, fetchTopHeadlinesPaginated, fetchTopHeadlinesPaginatedByCategory } from "../services/newsService";
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { Article } from '../interfaces/news';
+import {
+  fetchTopHeadlines,
+  fetchTopHeadlinesByCategory,
+  fetchTopHeadlinesPaginated,
+  fetchTopHeadlinesPaginatedByCategory,
+} from '../services/newsService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { logError } from "../utils/logger";
+import { logError } from '../utils/logger';
 
 // Define state interface
 interface NewsState {
@@ -26,21 +31,16 @@ const initialState: NewsState = {
   currentCategory: null,
 };
 
-
 // Load saved articles from localStorage (for web) or AsyncStorage (for mobile)
-export const loadSavedArticles = createAsyncThunk(
-  'news/loadSavedArticles',
-  async () => {
-    try {
-      const savedArticlesJson = await AsyncStorage.getItem('savedArticles');
-      return savedArticlesJson ? JSON.parse(savedArticlesJson) : [];
-    } catch (error) {
-       
-      logError('Failed to load saved articles', error);
-      return [];
-    }
+export const loadSavedArticles = createAsyncThunk('news/loadSavedArticles', async () => {
+  try {
+    const savedArticlesJson = await AsyncStorage.getItem('savedArticles');
+    return savedArticlesJson ? JSON.parse(savedArticlesJson) : [];
+  } catch (error) {
+    logError('Failed to load saved articles', error);
+    return [];
   }
-);
+});
 
 // Fetch news thunk
 export const fetchNews = createAsyncThunk(
@@ -95,14 +95,12 @@ export const fetchMoreNews = createAsyncThunk(
 );
 
 const newsSlice = createSlice({
-  name: "news",
+  name: 'news',
   initialState,
   reducers: {
     saveArticle: (state, action: PayloadAction<Article>) => {
       // Prevent duplicate saves
-      const isDuplicate = state.savedArticles.some(
-        article => article.url === action.payload.url
-      );
+      const isDuplicate = state.savedArticles.some((article) => article.url === action.payload.url);
 
       if (!isDuplicate) {
         state.savedArticles.push(action.payload);
@@ -116,7 +114,7 @@ const newsSlice = createSlice({
     },
     unsaveArticle: (state, action: PayloadAction<Article>) => {
       state.savedArticles = state.savedArticles.filter(
-        article => article.url !== action.payload.url
+        (article) => article.url !== action.payload.url
       );
       // Update AsyncStorage
       try {
@@ -128,7 +126,7 @@ const newsSlice = createSlice({
     resetPagination: (state) => {
       state.currentPage = 1;
       state.hasMorePages = true;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -168,9 +166,8 @@ const newsSlice = createSlice({
       })
       .addCase(fetchMoreNews.fulfilled, (state, action) => {
         const newArticles = action.payload.filter(
-          newArticle => !state.articles.some(
-            existingArticle => existingArticle.url === newArticle.url
-          )
+          (newArticle) =>
+            !state.articles.some((existingArticle) => existingArticle.url === newArticle.url)
         );
 
         if (newArticles.length > 0) {
