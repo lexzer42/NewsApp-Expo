@@ -76,4 +76,4 @@ jobs:
         run: pnpm add -g expo-cli
 
       - name: Build web
-        run: pnpx expo export:web
+        run: pnpx expo export
