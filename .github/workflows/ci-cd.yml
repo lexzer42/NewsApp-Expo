@@ -16,21 +16,18 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-          cache: 'pnpm'
+          cache: 'npm'
           
-      - name: Install pnpm
-        run: npm install -g pnpm
-      
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
       
       - name: Run ESLint
-        run: pnpm lint
+        run: npm run lint
         env:
           CI: true
       
       - name: Run Prettier check
-        run: pnpm format:check
+        run: npm run format:check
         env:
           CI: true
 
