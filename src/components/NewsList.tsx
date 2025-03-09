@@ -15,12 +15,11 @@ import {
 } from "react-native-paper";
 import { FlatList, View, StyleSheet, TouchableOpacity } from "react-native";
 import { format } from "date-fns";
-import { Article } from "../interfaces/news";
+import { Article, RootStackParamList} from "../interfaces/news";
 import { EmptyState, ErrorMessage } from "./StatusHandler";
 import SkeletonLoading from "./SkeletonLoading";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../navigation/AppNavigator";
 
 type NewsListNavigationProp = StackNavigationProp<RootStackParamList, 'Detail'>;
 
@@ -32,7 +31,7 @@ const NewsList = () => {
     const theme = useTheme();
     const [isRefreshing, setIsRefreshing] = useState(false);
     const [loadingMore, setLoadingMore] = useState(false);
-    
+
     // Load news on component mount
     useEffect(() => {
         dispatch(fetchNews(1));
