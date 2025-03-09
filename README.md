@@ -1,80 +1,87 @@
-# 📰 News Feed Mobile App - React Native  
+# 📱 NewsFeed Mobile · React Native  
 
-Aplicación móvil multiplataforma para consumo de noticias en tiempo real, construida con arquitectura moderna y mejores prácticas de desarrollo.
+![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)  
+*Aplicación de noticias multiplataforma con gestión de favoritos y filtros*  
 
-## 🌟 Características Clave  
+## 🌟 Destacados  
+- 🗞 **Feed dinámico** con noticias en tiempo real  
+- ❤️ **Favoritos persistentes** (AsyncStorage)  
+- 🔧 Estado global con **Redux Toolkit**  
+- 📱 **UI profesional** mediante React Native Paper  
+- 🧪 **Cobertura de tests** con Jest + Testing Library  
 
-- 🔄 **Integración con APIs REST** mediante Axios  
-- 🧠 **Gestión de estado global** con Redux Toolkit  
-- 🎨 **Interfaz consistente** usando React Native Paper  
-- 🧹 **Código limpio** garantizado por ESLint + Prettier  
-- 📦 **Gestión eficiente de dependencias** con pnpm  
-- 📱 **Compatibilidad multiplataforma** (iOS/Android)  
+---
 
-## 🏗 Estructura del Proyecto  
+## 🛠 Arquitectura Técnica  
 
+### 📂 Estructura de Carpetas  
 ```bash
 src/
-├── api/           # Configuración de servicios API
-├── assets/        # Recursos multimedia y fuentes
-├── components/    # Componentes UI reutilizables
-├── navigation/    # Gestión de rutas (React Navigation)
-├── redux/         # Store, slices y acciones globales
-├── screens/       # Vistas principales
-├── styles/        # Temas y estilos globales
-└── utils/         # Helpers y utilities
+├── 📡 services/       # Comunicación con APIs externas
+│   └── newsService.ts  # Configuración Axios y endpoints
+├── 🧩 components/     # Componentes UI reutilizables
+│   ├── NewsList.tsx    # Listado principal de artículos
+│   ├── SkeletonLoading.tsx  # Componente para estados de carga
+│   ├── StatusHandler.tsx    # Manejador de estados de la aplicación
+│   └── WebViewportConstraint.tsx  # Restricciones de viewport para web
+├── 🗺 navigation/     # Gestión de rutas y navegación
+│   └── AppNavigator.tsx # Stack Navigator principal
+├── 🧠 redux/         # Gestión de estado global
+│   ├── store.ts       # Configuración Redux Toolkit
+│   ├── newsSlice.ts   # Lógica de noticias y favoritos
+│   └── hooks.ts       # Custom hooks para Redux
+├── 🖥 screens/       # Pantallas principales de la app
+│   ├── DetailScreen.tsx # Vista completa de artículo
+│   ├── CategoriesScreen.tsx # Pantalla de categorías de noticias
+│   └── SavedNewScreen.tsx  # Pantalla de noticias guardadas
+├── 📐 interfaces/    # Tipos específicos de dominio
+│   └── news.ts        # Interface News y tipos relacionados
+└── 🌐 types/         # Definiciones globales TypeScript
+    └── env.d.ts       # Declaración variables de entorno
 ```
 
-## ⚙️ Configuración Técnica  
+### 🔧 Stack Tecnológico  
+| Categoría       | Tecnologías                          |
+|-----------------|--------------------------------------|
+| Core            | React Native · TypeScript · Expo     |
+| Estado          | Redux Toolkit · RTK Query            |
+| UI              | React Native Paper · Vector Icons    |
+| Calidad         | ESLint · Prettier · Jest             |
+| DevOps          | GitHub Actions · PNPM · Env Variables|
 
-### 📦 Gestión de Paquetes  
-| Herramienta | Justificación |  
-|-------------|---------------|  
-| `pnpm` | Rendimiento superior y espacio eficiente |  
-| `TypeScript` | Tipado estático para calidad de código |  
-| `React Native Paper` | Componentes UI profesionales y accesibles |  
+---
 
-### 🛠️ Control de Calidad  
-| Herramienta | Función |  
-|-------------|---------|  
-| ESLint | Análisis estático de código |  
-| Prettier | Formateo automático consistente |  
-| GitHub Actions | Pipeline CI/CD integrado |  
+## ⚡️ Primeros Pasos  
 
-## 🚀 Instalación Local  
-
-1. Clonar repositorio:  
+1. **Clonar repositorio**  
 ```bash
-git clone 
+git clone https://github.com/lexzer42/NewsApp-Expo.git && cd NewsApp-Expo
 ```
 
-2. Instalar dependencias:  
+2. **Instalar dependencias**  
 ```bash
 pnpm install
 ```
 
-3. Iniciar servidor de desarrollo:  
+3. **Configurar entorno**  
+```bash
+cp .env.example .env
+# Agregar tus API keys
+```
+
+4. **Ejecutar app**  
 ```bash
 pnpm start
 ```
 
-## 🔄 Flujo CI/CD  
-
-| Etapa | Trigger | Acciones |  
-|-------|---------|----------|  
-| **Validación** | Push a `develop`/`main` | Linting + Formateo |  
-| **Despliegue** | Merge a `main` | Publicación en Expo (simulado) |  
-
-## 🔒 Políticas de Rama  
-
-- 🛑 Push directo a `main` bloqueado  
-- ✅ **Merge Requisitos**:  
-  - 1+ aprobaciones de código  
-  - Todos los tests CI pasados  
-  - Conflictos resueltos  
-- ⚠️ **Restricciones**:  
-  - Force push prohibido  
-  - Eliminación de rama protegida  
-
 ---
 
+## 🔄 Flujo de Desarrollo  
+
+| Etapa           | Comando           | Acción                     |
+|-----------------|-------------------|----------------------------|
+| Lint & Formato  | `pnpm lint:fix`   | Corregir estilo código     |
+| Tests           | `pnpm test`       | Ejecutar suite de pruebas  |
+| Build           | `pnpm build`      | Compilar bundle producción |
+
+---
