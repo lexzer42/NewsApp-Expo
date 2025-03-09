@@ -1,20 +1,22 @@
-# 📱 NewsFeed Mobile · React Native  
+# 📱 NewsFeed Mobile · React Native
 
 ![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)  
-*Aplicación de noticias multiplataforma con gestión de favoritos y filtros*  
+_Aplicación de noticias multiplataforma con gestión de favoritos y filtros_
 
-## 🌟 Destacados  
-- 🗞 **Feed dinámico** con noticias en tiempo real  
-- ❤️ **Favoritos persistentes** (AsyncStorage)  
-- 🔧 Estado global con **Redux Toolkit**  
-- 📱 **UI profesional** mediante React Native Paper  
-- 🧪 **Cobertura de tests** con Jest + Testing Library  
+## 🌟 Destacados
+
+- 🗞 **Feed dinámico** con noticias en tiempo real
+- ❤️ **Favoritos persistentes** (AsyncStorage)
+- 🔧 Estado global con **Redux Toolkit**
+- 📱 **UI profesional** mediante React Native Paper
+- 🧪 **Cobertura de tests** con Jest + Testing Library
 
 ---
 
-## 🛠 Arquitectura Técnica  
+## 🛠 Arquitectura Técnica
 
-### 📂 Estructura de Carpetas  
+### 📂 Estructura de Carpetas
+
 ```bash
 src/
 ├── 📡 services/       # Comunicación con APIs externas
@@ -40,48 +42,53 @@ src/
     └── env.d.ts       # Declaración variables de entorno
 ```
 
-### 🔧 Stack Tecnológico  
-| Categoría       | Tecnologías                          |
-|-----------------|--------------------------------------|
-| Core            | React Native · TypeScript · Expo     |
-| Estado          | Redux Toolkit · RTK Query            |
-| UI              | React Native Paper · Vector Icons    |
-| Calidad         | ESLint · Prettier · Jest             |
-| DevOps          | GitHub Actions · PNPM · Env Variables|
+### 🔧 Stack Tecnológico
+
+| Categoría | Tecnologías                           |
+| --------- | ------------------------------------- |
+| Core      | React Native · TypeScript · Expo      |
+| Estado    | Redux Toolkit · RTK Query             |
+| UI        | React Native Paper · Vector Icons     |
+| Calidad   | ESLint · Prettier · Jest              |
+| DevOps    | GitHub Actions · PNPM · Env Variables |
 
 ---
 
-## ⚡️ Primeros Pasos  
+## ⚡️ Primeros Pasos
 
-1. **Clonar repositorio**  
+1. **Clonar repositorio**
+
 ```bash
 git clone https://github.com/lexzer42/NewsApp-Expo.git && cd NewsApp-Expo
 ```
 
-2. **Instalar dependencias**  
+2. **Instalar dependencias**
+
 ```bash
 pnpm install
 ```
 
-3. **Configurar entorno**  
+3. **Configurar entorno**
+
 ```bash
 cp .env.example .env
 # Agregar tus API keys
 ```
 
-4. **Ejecutar app**  
+4. **Ejecutar app**
+
 ```bash
 pnpm start
 ```
 
 ---
 
-## 🔄 Flujo de Desarrollo  
+## 🔄 Flujo de Desarrollo
 
-| Etapa           | Comando           | Acción                     |
-|-----------------|-------------------|----------------------------|
-| Lint & Formato  | `pnpm lint:fix`   | Corregir estilo código     |
-| Tests           | `pnpm test`       | Ejecutar suite de pruebas  |
-| Build           | `pnpm build`      | Compilar bundle producción |
+| Etapa          | Comando         | Acción                     |
+| -------------- | --------------- | -------------------------- |
+| Lint & Formato | `pnpm lint:fix` | Corregir estilo código     |
+| Tests          | `pnpm test`     | Ejecutar suite de pruebas  |
+| Build          | `pnpm build`    | Compilar bundle producción |
 
 ---
