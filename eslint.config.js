@@ -33,7 +33,7 @@ export default [
       'no-console': ['warn', { allow: ['error'] }],
       '@typescript-eslint/no-require-imports': 'warn',
     },
-    ignores: ['node_modules/**', 'coverage/**'],
+    ignores: ['node_modules/**', 'coverage/**', 'jest.setup.ts'],
   },
   // Special config for CJS files
   {
