@@ -27,3 +27,17 @@ export type NewsApiError = {
     message: string;
     code?: string;
 };
+
+// Navigation type definitions
+export type RootStackParamList = {
+    HomeTabs: undefined;
+    Detail: { article: Article };
+    Categories: undefined;
+    News: undefined;
+};
+
+export type HomeTabParamList = {
+    News: undefined;
+    Categories: undefined;
+    Saved: undefined;
+};
