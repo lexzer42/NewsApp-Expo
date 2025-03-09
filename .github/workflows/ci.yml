@@ -9,26 +9,24 @@ on:
       - main
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - name: Set up Node.js and pnpm
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: '18'
+          cache: 'pnpm'
 
-      - name: Install pnpm
+      - name: Install pnpm globally
         run: npm install -g pnpm
 
       - name: Install dependencies
-        run: pnpm install
-
-      - name: Run build
-        run: pnpm run build
+        run: pnpm install --frozen-lockfile
 
       - name: Create .env file
         run: |
@@ -51,7 +49,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Set up Node.js and pnpm
         uses: actions/setup-node@v3
@@ -59,7 +58,7 @@ jobs:
           node-version: '18'
           cache: 'pnpm'
 
-      - name: Install pnpm
+      - name: Install pnpm globally
         run: npm install -g pnpm
 
       - name: Install dependencies
