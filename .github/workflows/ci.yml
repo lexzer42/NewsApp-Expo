@@ -11,42 +11,6 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10 # última versión estable de pnpm
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Create .env file
-        run: |
-          echo "NEWS_API_BASE_URL=https://newsapi.org/v2" >> .env
-          echo "NEWS_API_KEY=${{ secrets.NEWS_API_KEY }}" >> .env
-          echo "APP_ENV=development" >> .env
-          echo "EXPO_OS=android" >> .env
-
-      - name: Lint
-        run: pnpm run lint
-
-      - name: Check formatting
-        run: pnpm run format:check
-
-  build:
-    needs: validate
-    runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -65,15 +29,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Create .env file
-        run: |
-          echo "NEWS_API_BASE_URL=https://newsapi.org/v2" >> .env
-          echo "NEWS_API_KEY=${{ secrets.NEWS_API_KEY }}" >> .env
-          echo "APP_ENV=development" >> .env
-          echo "EXPO_OS=android" >> .env
+      - name: Lint
+        run: pnpm run lint
 
-      - name: Install Expo CLI
-        run: pnpm add -g expo-cli
-
-      - name: Build web
-        run: pnpx expo export
+      - name: Check formatting
+        run: pnpm run format:check
