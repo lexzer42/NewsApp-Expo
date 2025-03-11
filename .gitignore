@@ -34,3 +34,27 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# Archivos .env 
+.env
+.env.development
+.env.production
+
+# Cobertura de tests
+coverage/
+
+# Archivos generados por IDE
+.idea/
+*.swp
+*.swo
+
+# Archivos de logs
+*.log
+
+# Directorios de build específicos de plataforma
+android/app/build/
+ios/build/
+*.app.dSYM.zip
+
+# Caché de pnpm
+.pnpm-store/
