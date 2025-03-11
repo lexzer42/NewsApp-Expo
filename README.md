@@ -78,7 +78,7 @@ cp .env.example .env
 4. **Ejecutar app**
 
 ```bash
-pnpm start
+pnpm run start
 ```
 
 ---
