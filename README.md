@@ -87,6 +87,8 @@ pnpm run start
 
 | Etapa          | Comando         | Acción                     |
 | -------------- | --------------- | -------------------------- |
+| Lint           | `pnpm lint`     | Verificar estilo código    |
+| Formato        | `pnpm format`   | Formatear código           |
 | Lint & Formato | `pnpm lint:fix` | Corregir estilo código     |
 | Tests          | `pnpm test`     | Ejecutar suite de pruebas  |
 | Build          | `pnpm build`    | Compilar bundle producción |
